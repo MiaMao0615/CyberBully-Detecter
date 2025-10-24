@@ -1,7 +1,7 @@
 # CyberBully Detector
 This repository implements a simple Chinese *cyber‑bullying text classifier* based on TF–IDF features and a multinomial Naïve Bayes model. It includes scripts to prepare a dataset, train a model, evaluate its performance, and a small Tkinter GUI for interactive prediction.
 
-<img src="./image.png" width="500"/>  
+<img src="./img.png" width="500"/>  
 
 ## Features
 - **Data preparation** – DataPrepare.py reads a CSV/Excel file with a TEXT column and a label column (0 = normal, 1 = cyber bullying), cleans the text with jieba word segmentation and splits it into train/test sets. Progress is displayed and the processed data are cached in temp/*.pkl so that subsequent runs are fast.
