@@ -1,46 +1,63 @@
-CyberBully Detector
+# CyberBully Detector
 
-A simple Chinese cyberbullying text classifier based on TF–IDF features and a Multinomial Naïve Bayes model. The repo includes scripts for data preparation, model training/evaluation, and a small Tkinter GUI for interactive prediction.
+A simple tool to detect cyberbullying in Chinese text using TF-IDF and a Naive Bayes classifier. Includes scripts for processing data, training a model, and a GUI for testing.
 
-Main files
+## 📁 Main Files
 
-* DataPrepare.py – Loads a CSV/Excel file, cleans and segments text (jieba), splits into train/test, and caches processed data.
-* TrainModel.py – Trains a TF–IDF + Naïve Bayes classifier and saves the vectorizer/model.
-* CyberBullyRecognizer.py – Loads the saved model and classifies new input text.
-* App.py – Tkinter GUI: paste a sentence, click a button, and see the predicted category.
-* TopMenu.py, StatBar.py – Menu bar and status bar for the GUI.
+| File | Purpose |
+|------|---------|
+| `DataPrepare.py` | Prepares your data: loads, cleans, splits it |
+| `TrainModel.py` | Trains and saves the classification model |
+| `CyberBullyRecognizer.py` | Loads the model and predicts on new text |
+| `App.py` | Simple GUI to test the model |
+| `TopMenu.py`, `StatBar.py` | GUI menu and status bar |
 
-Installation
+## ⚙️ Setup
 
-1. Go to the project directory:
-   cd /path/to/CyberBullyDetector
+1. Go to the project folder:
+```bash
+cd /path/to/CyberBullyDetector
+```
 
-2. (Optional) Create and activate a virtual environment:
-   python -m venv .venv
-   On Windows: .venv\Scripts\activate
-   On macOS / Linux: source .venv/bin/activate
+2. (Optional) Create a virtual environment:
+```bash
+python -m venv .venv
+```
+- Windows: `.venv\Scripts\activate`
+- Mac/Linux: `source .venv/bin/activate`
 
-3. Install dependencies:
-   pip install jieba pandas scikit-learn tqdm joblib
+3. Install requirements:
+```bash
+pip install jieba pandas scikit-learn tqdm joblib
+```
 
-Basic usage
+## 🚀 How to Use
 
-1. Prepare your dataset
-   Create a CSV file (for example, CyberBully.csv) with two columns:
+### 1. Prepare Your Data
+Create a CSV file (e.g., `data.csv`) with two columns:
+- `TEXT` – Chinese sentences
+- `label` – `0` for normal, `1` for cyberbullying
 
-   * TEXT: Chinese sentences
-   * label: 0 (normal) or 1 (cyberbullying)
+### 2. Prepare & Split Data
+```bash
+python DataPrepare.py --csv data.csv --text-col TEXT --label-col label --test-size 0.1
+```
 
-2. Preprocess and split:
-   python DataPrepare.py --csv CyberBully.csv --text-col TEXT --label-col label --test-size 0.1
+### 3. Train the Model
+```bash
+python TrainModel.py
+```
+To also test the model:
+```bash
+python TrainModel.py --evaluate
+```
 
-3. Train the model:
-   python TrainModel.py
+### 4. Launch the GUI
+```bash
+python App.py
+```
+Paste text and click the button to see the prediction.
 
-4. (Optional) Evaluate on the test set:
-   python TrainModel.py --evaluate
+---
 
-5. Launch the GUI:
-   python App.py
-
-Then paste text into the window and click the button to see the prediction.
+**Note**: This is a basic classifier for demonstration. For real-world use, consider more advanced models and larger datasets.
