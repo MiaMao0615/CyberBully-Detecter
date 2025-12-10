@@ -2,6 +2,8 @@
 
 A simple tool to detect cyberbullying in Chinese text using TF-IDF and a Naive Bayes classifier. Includes scripts for processing data, training a model, and a GUI for testing.
 
+![System Workflow Overview](image.png)
+
 ## 📁 Main Files
 
 | File | Purpose |
